@@ -1,15 +1,27 @@
-# AI驱动的知识库
+# 🤖 AI驱动的知识库系统
 
-一个现代化的智能知识库管理系统，集成了AI问答、语义搜索和知识图谱功能。
+一个基于人工智能的智能知识库系统，支持文档管理和智能问答功能。**已完成完整的设置页面集成和AI聊天功能！**
 
-## 功能特性
+## ✨ 主要功能
 
-- 📚 **智能文档管理** - 支持PDF、Word、Markdown等多种格式
-- 🔍 **语义搜索** - 基于向量数据库的智能搜索
-- 🤖 **AI问答** - 基于知识库内容的智能问答
-- 🕸️ **知识图谱** - 可视化知识关系和实体
-- 👥 **多用户支持** - 用户管理和权限控制
-- 📊 **数据分析** - 知识库使用统计和分析
+### 🎯 核心功能
+- **AI智能问答**: 支持中文关键词匹配和语义搜索
+- **文档管理**: 上传、存储和管理各种文档
+- **用户认证**: 完整的JWT认证系统
+- **设置管理**: 包含4个功能模块的完整设置页面
+
+### 📊 设置页面功能
+1. **个人信息**: 用户资料管理和编辑
+2. **安全设置**: 密码修改和安全配置
+3. **系统配置**: AI模型参数和系统设置
+4. **使用统计**: 实时系统数据和使用情况
+
+### 🔧 技术特性
+- **前端**: React + TypeScript + Ant Design
+- **后端**: FastAPI + SQLAlchemy + ChromaDB
+- **数据库**: SQLite + 向量数据库
+- **认证**: JWT Token认证
+- **AI引擎**: 支持中文语义理解
 
 ## 技术栈
 
@@ -30,83 +42,95 @@
 - ChromaDB (向量存储)
 - Redis (缓存)
 
-## 快速开始
+## 🚀 快速开始
 
 ### 环境要求
-- Node.js 18+
-- Python 3.9+
-- PostgreSQL 13+
+- Python 3.8+
+- Node.js 16+
+- npm 或 yarn
 
 ### 安装和运行
 
-1. 克隆项目
+1. **克隆项目**
 ```bash
-git clone <repository-url>
-cd ai-knowledge-base
+git clone https://github.com/yucl80/aikb.git
+cd aikb
 ```
 
-2. 安装依赖
+2. **启动开发环境**
 ```bash
-# 后端依赖
-cd backend
-pip install -r requirements.txt
-
-# 前端依赖
-cd ../frontend
-npm install
+chmod +x start_dev.sh
+./start_dev.sh
 ```
 
-3. 配置环境变量
-```bash
-cp .env.example .env
-# 编辑 .env 文件，配置数据库和API密钥
+3. **访问应用**
+- 前端: http://localhost:3000
+- 后端API: http://localhost:8000
+
+### 默认登录信息
+- 用户名: `admin`
+- 密码: `admin123`
+
+## 📱 功能演示
+
+### AI问答功能
+- 支持中文关键词: "深度学习", "机器学习", "人工智能"
+- 智能语义匹配和相关度评分
+- 实时查询历史记录
+
+### 设置页面
+- **个人信息**: 完整的用户资料管理
+- **安全设置**: 密码修改功能
+- **系统配置**: AI模型参数调整
+- **使用统计**: 实时系统数据展示
+  - 文档总数、查询次数、用户数量
+  - 存储使用情况和系统状态
+
+## 🏗️ 项目结构
+
 ```
-
-4. 启动服务
-```bash
-# 启动后端
-cd backend
-uvicorn main:app --host 0.0.0.0 --port 12000 --reload
-
-# 启动前端
-cd ../frontend
-npm start
-```
-
-## 项目结构
-
-```
-ai-knowledge-base/
-├── backend/                 # 后端API服务
-│   ├── app/
-│   │   ├── api/            # API路由
-│   │   ├── core/           # 核心配置
-│   │   ├── models/         # 数据模型
-│   │   ├── services/       # 业务逻辑
-│   │   └── utils/          # 工具函数
-│   ├── requirements.txt
-│   └── main.py
-├── frontend/               # 前端React应用
+aikb/
+├── frontend/          # React前端应用
 │   ├── src/
-│   │   ├── components/     # 组件
-│   │   ├── pages/          # 页面
-│   │   ├── services/       # API服务
-│   │   ├── utils/          # 工具函数
-│   │   └── types/          # TypeScript类型
-│   ├── package.json
-│   └── public/
-├── docs/                   # 文档
-└── README.md
+│   │   ├── pages/     # 页面组件
+│   │   ├── services/  # API服务
+│   │   └── components/ # 通用组件
+├── backend/           # FastAPI后端
+│   ├── app/
+│   │   ├── api/       # API路由
+│   │   ├── models/    # 数据模型
+│   │   ├── services/  # 业务逻辑
+│   │   └── core/      # 核心配置
+└── docker-compose.yml # Docker配置
 ```
 
-## API文档
+## 🧪 测试状态
 
-启动后端服务后，访问 `http://localhost:12000/docs` 查看自动生成的API文档。
+- ✅ 后端认证: `/api/v1/auth/token` 端点正常
+- ✅ 后端系统统计: 返回真实数据
+- ✅ 前端登录: admin/admin123 登录成功
+- ✅ 设置页面: 所有4个标签页功能正常
+- ✅ AI聊天功能: 支持置信度评分
+- ✅ 使用统计: 实时系统数据显示
 
-## 贡献指南
+## 🔄 API文档
 
-欢迎提交Issue和Pull Request来改进这个项目。
+启动后端服务后，访问 http://localhost:8000/docs 查看完整的API文档。
 
-## 许可证
+## 📝 更新日志
+
+### v1.0.0 (2025-06-04)
+- ✅ 完整的AI聊天功能实现
+- ✅ 设置页面4个模块全部完成
+- ✅ 前后端API集成完成
+- ✅ 用户认证系统完善
+- ✅ 实时统计数据展示
+- ✅ 中文关键词支持优化
+
+## 🤝 贡献
+
+欢迎提交Issue和Pull Request来改进这个项目！
+
+## 📄 许可证
 
 MIT License
